@@ -1,48 +1,125 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+
+/* font-family: 'Caveat', cursive; 
+font-family: 'Open Sans', sans-serif;
+/* color palette
+#2B2042 - dark blue
+#8099AE - light blue
+#EDF2F4 - blue/white
+#EF233C - red
+ */
+
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, theio9ad, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+* {
 	margin: 0;
 	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	box-sizing: border-box;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+body{
+	background-color:#2B2042 ;
 }
-body {
-	line-height: 1;
+header {
+	background: white;
+	padding: 20px
 }
-ol, ul {
-	list-style: none;
+
+header h1, h2 {
+	color: darkblue; 
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+
 }
-blockquote, q {
-	quotes: none;
+
+.score-board {
+	margin: 20px auto;
+	border: 3px solid white;
+	width: 200px;
+	color: white;
+	font-size: 46;
+	text-align: center;
+	padding: 15px 20px;
+	font-family: 'Open Sans', sans-serif;
+	position: relative;
+
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+.badge {
+	background:#8099AE;
+	font-size: 14px;
+	padding: 2px 10px;
+	font-family: 'Open Sans', sans-serif;
+	
 }
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+
+#user-label {
+	position: absolute;
+	top: 40px;
+	left: -20px;
+}
+
+#comp-label {
+	position: absolute;
+	top: 40px;
+	right: -30px;
+}
+
+.result {
+	font-size: 40px;
+	color: white;
+}
+
+.result h5 {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+#current-word {
+	border: 3px solid white;
+	width: 400px;
+	margin: 10px auto;
+
+}
+
+#current-word p {
+	text-align: center;
+	color: white
+}
+
+#guess-remaining {
+	border: 3px solid white;
+	width: 400px;
+	margin: 10px auto;
+
+}
+
+#guess-remaining p {
+	text-align: center;
+	color: white
+
+}
+
+
+#already-guessed {
+	border: 3px solid white;
+	width: 400px;
+	margin: 10px auto;
+
+}
+
+#already-guessed p {
+	text-align: center;
+	color: white
+
+}
+
+
+
+
+.badge2 {
+	font-size: 40px;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+
 }
