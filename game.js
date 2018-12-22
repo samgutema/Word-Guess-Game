@@ -21,38 +21,46 @@
 
 
 //score board
-var winLabel = document.getElementById("win-label");
-var loseLabel = document.getElementById("lose-label");
-var winScore = document.getElementById("win-score");
-var loseScore = document.getElementById("lose-score");
+
 
 //divs
-var winResult = document.getElementById("win-result");
+
+
 var currentWord = document.getElementById("current-word");
 var guessRemaining = document.getElementById("guess-remaining");
 var alreadyGuessed = document.getElementById("already-guessed");
+var winScore = document.getElementById("win-score");
+var loseScore = document.getElementById("lose-score");
 
 
 //declaring game 
-var game = ['dog', 'house', 'cat', 'laptop'];
+var game = ["dog", "house", "cat", "laptop"];
 var wins = 0;
 var losses = 0;
 var attemptsLeft = 10;
-var gameRunning = false;
-var pickedWord = "";
-
+var gameRunning = true;
+var pickedWord = " ";
 var pickedWordPlaceHolderArr = [];
 var guessLetterBank = [];
 var incorrectLetterBank = [];
 
 //create new game function
 
+
+
 document.onkeyup = function (event) {
-    var gameRunning = true;
-    var attemptsLeft = 10;
-    var pickedWordPlaceHolderArr = [];
-    var guessLetterBank = [];
-    var incorrectLetterBank = [];
+    
+    var wins = 0;
+    var losses = 0;
+         // var attemptsLeft = 10;
+ //  var gameRunning = true;
+        // var pickedWord = "";
+   var pickedWordPlaceHolderArr = [""];
+    var guessLetterBank = [""];
+        // var incorrectLetterBank = [];
+
+ 
+
 
     //pick random new word
     pickedWord = game[Math.floor(Math.random() * game.length)];
@@ -65,8 +73,9 @@ document.onkeyup = function (event) {
         else {
             pickedWordPlaceHolderArr.push("_");
         }
-    }
 
+        
+    }
     //write new game to the dom 
     guessRemaining.textContent = attemptsLeft;
     currentWord.textContent = pickedWordPlaceHolderArr.join(" ");
@@ -84,26 +93,17 @@ document.onkeyup = function (event) {
 
             //check if guessed letter is in picked word 
 
-            for (var i = 0; i < pickedWord.length; i++) {
-                if (pickedWord[i].toLocaleLowerCase() === letter.toLocaleLowerCase()) {
+             for (var j = 0; j < pickedWord.length; j++) {
+               if (pickedWord[j].toLocaleLowerCase() === letter.toLocaleLowerCase()) {
 
-                    pickedWordPlaceHolderArr[i] = pickedWord[i];
-                }
-            }
+                    pickedWordPlaceHolderArr[j] = pickedWord[j];
+               }
+           }
 
-            currentWord.textContent = pickedWordPlaceHolderArr.join(" ");
+            currentWord.innerHTML = pickedWordPlaceHolderArr.join(" ");
 
 
         }
-        else {
-            if (!gameRunning) {
-                alert("game isnt running, refresh page");
-            }
-            else {
-                alert("you're already guessed letter");
-            }
-        }
-
 
 
     }
@@ -117,34 +117,37 @@ document.onkeyup = function (event) {
 
 
     checkIncorrect = function (letter) {
-        if (
-            pickedWordPlaceHolderArr.indexOf(letter.toLocaleLowerCase()) === -1
-            &&
-            pickedWordPlaceHolderArr.indexOf(letter.toLocalUpperCase()) === -1
-        )
+       if (attemptsLeft === 0 ) {
+           attemptsLeft = 10  
+          
+         
+        }
 
-            
-        attemptsLeft --;
+        pickedWordPlaceHolderArr.indexOf(letter.toLocaleLowerCase()) === -1
+        &&
+        pickedWordPlaceHolderArr.indexOf(letter.toLocalUpperCase()) === -1
+        attemptsLeft--;
         incorrectLetterBank.push(letter);
-            
+
         alreadyGuessed.textContent = incorrectLetterBank.join(" ");
-        guessRemaining.textContent = attemptsLeft; 
-            
+        guessRemaining.textContent = attemptsLeft;
+
+
 
     }
 
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         checkIncorrect(event.key);
 
-    }
+   }
 
 
 
-//check for loss
+    //check for loss
 
     checkLoss = function () {
-        if (attemptsLeft === 0 ) {
-            losses ++;
+        if (attemptsLeft === 0) {
+            losses++;
 
             loseScore.textContent = losses;
 
@@ -153,12 +156,16 @@ document.onkeyup = function (event) {
 
     }
 
-//check for win 
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        checkLoss(event.key);
+
+    }
+
+
+    //check for win 
 
     checkWin = function () {
-        if (pickedWord.toLocaleLowerCase() === pickedWordPlaceHolderArr.join ("").toLocaleLowerCase())
-
-        {
+        if (pickedWord.toLocaleLowerCase() === pickedWordPlaceHolderArr.join("").toLocaleLowerCase()) {
             wins++;
 
             winScore.textContent = wins;
@@ -166,17 +173,14 @@ document.onkeyup = function (event) {
         }
     }
 
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+        checkWin(event.key);
+
+    }
+
+
+
+   
 
 }
 
-
-
-
-
-
-
-
-
-
-
-// 1:20
